@@ -3,18 +3,6 @@ import Navigation from "./Navigation";
 import { useLocation } from "react-router-dom";
 
 export default function Header() {
-  //   return (
-  //     <header className="Header">
-  //       {/* <div>
-  //         <h1>VICTVS</h1> <br />
-  //         <span>Exam Scheduler</span>
-  //       </div> */}
-
-  //       <Navigation />
-  //     </header>
-  //   );
-  // }
-
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 

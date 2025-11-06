@@ -16,8 +16,6 @@ export default function ExamList() {
   // TODO: Update the component with the exam session data
   useEffect(() => {
     fetchExamSessions().then((examSessionsData) => {
-      console.log("Data received:", examSessionsData);
-      console.log("Number of sessions:", examSessionsData.length);
       setExamSessions(examSessionsData);
       setOriginalExamSessions(examSessionsData);
     });
@@ -53,7 +51,6 @@ export default function ExamList() {
         );
       });
     }
-    console.log("filtersObject List", filtersObject);
   }, [filtersObject]);
 
   return (

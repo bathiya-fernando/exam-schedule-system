@@ -54,7 +54,6 @@ export default function FilterModal(props) {
     }
 
     props.setFiltersObject(params);
-    console.log("filter data filter modal", params);
   };
 
   const handleClose = () => {
