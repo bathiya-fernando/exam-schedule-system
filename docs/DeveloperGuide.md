@@ -61,36 +61,39 @@ The application consists of:
  - REACT_APP_GOOGLE_MAPS_API_KEY=AIzaSyBwAnEOtEkETAAsYVAb7k9b7PWWiUFbsjc
 
 
-## 📁 Repository Structure
+## Repository Structure
 
 exam-schedule-system/
-├── backend/ # Laravel API
-│ ├── app/
-│ ├── database/
-│ │ ├── migrations/ # Schema for schedules & candidates tables
-│ │ └── seeders/ # ScheduleSeeder to import JSON data
-│ ├── routes/
-│ │ └── api.php # API endpoints
-│ ├── .env.example
-│ ├── composer.json
-│ └── README.md
+├── backend/                    # Laravel API
+│   ├── app/
+│   │   ├── Http/
+│   │   │   └── Controllers/
+│   │   └── Models/
+│   ├── database/
+│   │   ├── migrations/         # Schema for schedules & candidates tables
+│   │   └── seeders/            # ScheduleSeeder to import JSON data
+│   ├── routes/
+│   │   └── api.php             # API endpoints
+│   ├── .env.example
+│   ├── composer.json
+│   └── README.md
 │
-├── frontend/ # React frontend
-│ ├── src/
-│ │ ├── components/ # Reusable UI components
-│ │ ├── api/ # Axios instance for API calls
-│ │ ├── App.js # Main app file
-│ │ └── index.js
-│ ├── public/
-│ ├── package.json
-│ └── tailwind.config.js
+├── frontend/                   # React frontend
+│   ├── src/
+│   │   ├── components/         # Reusable UI components
+│   │   ├── api/                # Axios instance for API calls
+│   │   ├── App.js              # Main app file
+│   │   └── index.js
+│   ├── public/
+│   ├── package.json
+│   └── tailwind.config.js
 │
-├── docs/ # Developer documentation (guide, API)
-│ ├── DeveloperGuide.md # This file
-│ └── API.md
+├── docs/                       # Developer documentation
+│   ├── DeveloperGuide.md       # Setup & usage guide
+│   └── API.md                  # API documentation
 │
-├── exam-schedule-data.json # Provided data file
-├── README.md 
+├── exam-schedule-data.json     # Provided data file
+├── README.md
 └── .gitignore
 
 
