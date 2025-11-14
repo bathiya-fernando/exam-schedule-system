@@ -34,10 +34,10 @@ class ScheduleController extends Controller
             $query->where('datetime', '<=', $request->get('dateTo'));
         }
 
-        if ($request->get('sortBy') === 'date_asc') {
-            $query->orderBy('datetime', 'asc');
-        } else if ($request->get('sortBy') === 'date_desc') {
-            $query->orderBy('datetime', 'desc');
+        if ($request->get('sortBy') === 'asc') {
+            $query->orderBy('title', 'asc');
+        } else if ($request->get('sortBy') === 'desc') {
+            $query->orderBy('title', 'desc');
         }
 
         $schedules = $query->get();
