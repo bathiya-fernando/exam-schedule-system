@@ -11,3 +11,14 @@ export const fetchExamSessions = async () => {
     return [];
   }
 };
+
+
+export const fetchExamSessionsSort = async (query) => {
+  try {
+    const response = await axios.get(`${baseURL}/schedules?sortBy=${query.toString()}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error fetching exam schedules");
+    return [];
+  }
+};
