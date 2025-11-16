@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import ExamCard from "./ExamCard";
 import FilterModal from "./FilterModal";
-import { fetchExamSessions } from "../api/examApi";
+import { fetchExamSessions, fetchExamSessionsSort } from "../api/examApi";
+import SortByButton from "./SortByButton";
 
 export default function ExamList() {
   const [examSessions, setExamSessions] = useState([]);
@@ -11,6 +12,7 @@ export default function ExamList() {
     date: "",
     name: "",
     location: "",
+    title: "",
   });
 
   // TODO: Update the component with the exam session data
@@ -53,6 +55,12 @@ export default function ExamList() {
     }
   }, [filtersObject]);
 
+  const handleSortChange = async (sortValue) => {
+    setFiltersObject({ date: "", name: "", location: "" });
+    const sortedData = await fetchExamSessionsSort(sortValue);
+    setExamSessions(sortedData);
+  };
+
   return (
     <main className="ExamList">
       <div className="text-center my-8">
@@ -84,6 +92,7 @@ export default function ExamList() {
           >
             ↻ Reset Filters
           </button>
+          <SortByButton onSortChange={handleSortChange} />
         </div>
       </div>
       <div
