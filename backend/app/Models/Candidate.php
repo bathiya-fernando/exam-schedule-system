@@ -3,14 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Candidate extends Model
 {
-    protected $fillable = ['name', 'schedule_id'];
+    protected $fillable = ['name'];
 
-    public function schedule(): BelongsTo
+    public function schedule()
     {
-        return $this->belongsTo(Schedule::class, 'schedule_id', 'id');
+        return $this->belongsToMany(Schedules::class, 'candidate_schedule', 'candidate_id', 'schedule_id');
     }
 }
