@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Schedule;
+use App\Models\Schedules;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -10,7 +10,7 @@ class ScheduleController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Schedule::query()->with('candidates');
+        $query = Schedules::query()->with('candidates');
 
         if ($request->has('candidate')) {
             $candidate = $request->get('candidate');
@@ -47,13 +47,13 @@ class ScheduleController extends Controller
 
     public function show($id)
     {
-        $schedule = Schedule::with('candidates')->findOrFail($id);
+        $schedule = Schedules::with('candidates')->findOrFail($id);
         return response()->json($schedule);
     }
 
     public function progressStatus(Request $request, $id)
     {
-        $schedule = Schedule::findOrFail($id);
+        $schedule = Schedules::findOrFail($id);
         $current = $schedule->status;
         $next = $this->getNextStatus($current);
 

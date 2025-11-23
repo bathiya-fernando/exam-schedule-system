@@ -20,6 +20,8 @@ export default function ExamList() {
     fetchExamSessions().then((examSessionsData) => {
       setExamSessions(examSessionsData);
       setOriginalExamSessions(examSessionsData);
+      
+    console.log('default dataset' , examSessionsData);
     });
   }, []);
 

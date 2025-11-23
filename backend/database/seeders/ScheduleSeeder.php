@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Schedule;
+use App\Models\Schedules;
 use App\Models\Candidate;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\File;
@@ -14,12 +14,11 @@ class ScheduleSeeder extends Seeder
      */
     public function run(): void
     {
-        $json = File::get(base_path('..\exam-schedule-data.json'));
+        $json = File::get(database_path('data/exam-schedule-data.json'));
         $data = json_decode($json, true);
 
         foreach ($data as $item) {
-            Schedule::create([
-                'id' => $item['ID'],
+            $schedule =  Schedules::create([
                 'title' => $item['title'],
                 'status' => $item['status'],
                 'datetime' => $item['datetime'],
@@ -29,11 +28,9 @@ class ScheduleSeeder extends Seeder
                 'longitude' => $item['location']['longitude'],
             ]);
 
-            foreach ($item['candidates'] as $cand) {
-                Candidate::create([
-                    'name' => $cand,
-                    'schedule_id' => $item['ID'],
-                ]);
+            foreach ($item['candidates'] as $candName) {
+                $candidate = Candidate::firstOrCreate(['name' => $candName]);
+                $schedule->candidates()->syncWithoutDetaching([$candidate->id]);
             }
         }
     }
